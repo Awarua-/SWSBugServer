@@ -272,7 +272,7 @@ REST_ROUTER.prototype.handleRoutes= function(router, md5, self) {
 
 function submitBug(issueData, md5, callback) {
     var exceptionHash;
-    if (issueData.exception === null) {
+    if (issueData.exception == null || issueData.exception == "null") {
         exceptionHash = md5(issueData.userDescription);
     }
     else {
