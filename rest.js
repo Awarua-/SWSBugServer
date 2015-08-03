@@ -73,7 +73,7 @@ REST_ROUTER.prototype.handleRoutes= function(router, md5, self) {
                             "description": "If navigation backwards was possible",
                             "type": "Boolean"
                         },
-                        "screenshots": {
+                        "screenshot": {
                             "description": "A list of images encoded in base64",
                             "type": "Array"
                         },

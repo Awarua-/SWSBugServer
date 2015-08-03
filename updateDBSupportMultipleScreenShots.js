@@ -6,10 +6,10 @@ var db = mongoose.connection;
 mongoose.connect(url);
 
 issue.find().snapshot().forEach(
-  function (x) {
-    if (!Array.isArray(x.screenshot)){
-        x.screenshot = [ x.screenshot  ];
-        db.jobs.save(x);
+  function (instance) {
+    if (!Array.isArray(instance.screenshot)){
+        instance.screenshot = [ instance.screenshot  ];
+        issue.save(instance);
     }
   }
 );
