@@ -14,7 +14,7 @@ var issueSchema = new mongoose.Schema({
 	histUndoPossible: Boolean,
 	navBackwardPossible: Boolean,
 	navForwardPossible: Boolean,
-	screenshot: String,
+	screenshot: Array,
 	misc: String
 });
 
