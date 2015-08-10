@@ -1,15 +1,14 @@
-var mongoose = require('mongoose'),
-    issue = require('./models/issue.js');
+db = new Mongo();
+db.connect("mongodb://localhost/sws");
 
-var url = 'mongodb://localhost/sws';
-var db = mongoose.connection;
-mongoose.connect(url);
-
-issue.find().snapshot().forEach(
-  function (instance) {
-    if (!Array.isArray(instance.screenshot)){
-        instance.screenshot = [ instance.screenshot  ];
-        issue.save(instance);
+function f() {
+  db.issues.find( { "screenshot" : { $type : 2 } }  ).snapshot().forEach(
+    function (x) {
+      if (!Array.isArray(x.screenshot)){
+          x.screenshot = [ x.screenshot  ];
+          db.jobs.save(x);
+      }
     }
-  }
-);
+  )
+}
+db.eval(f);
